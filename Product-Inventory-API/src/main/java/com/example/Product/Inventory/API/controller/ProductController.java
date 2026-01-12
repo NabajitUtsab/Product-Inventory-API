@@ -2,12 +2,11 @@ package com.example.Product.Inventory.API.controller;
 
 import com.example.Product.Inventory.API.model.Product;
 import com.example.Product.Inventory.API.service.ProductService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -24,5 +23,19 @@ public class ProductController {
         log.info("Get all products");
         return ResponseEntity.ok(productService.getProducts());
     }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Product> getProductById(@PathVariable Long id) {
+        log.info("Get product by id: {}", id);
+        return ResponseEntity.ok(productService.getProductById(id));
+    }
+
+    @PostMapping
+    public ResponseEntity<Product> createProduct(@Valid @RequestBody Product product) {
+        log.info("Create product: {}", product.getName());
+        return ResponseEntity.ok(productService.addProduct(product));
+    }
+
+
 
 }

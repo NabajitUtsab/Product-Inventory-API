@@ -43,17 +43,3 @@ public class Product extends AuditEntity {
 
 }
 
-//id (Long, Primary Key, auto-generated)
-//
-//- name (String)
-//
-//- description (String)
-//
-//- sku (String - Stock Keeping Unit)
-//
-//- price (Double)
-//
-//- quantity (Integer)
-//
-//- status
-//        (Use the ProductStatus enum. Hint: Use @Enumerated(EnumType.STRING) to store the enum name as a string in the DB.)

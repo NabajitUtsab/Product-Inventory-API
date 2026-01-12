@@ -13,20 +13,22 @@ import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
+@MappedSuperclass
+@EntityListeners(AuditingEntityListener.class)
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@MappedSuperclass
-@EntityListeners(AuditingEntityListener.class)
+
 public class AuditEntity {
 
     @CreatedDate
     @Column(name = "created_date", updatable = true)
-    private LocalDate createDate;
+    private LocalDateTime createDate;
 
     @LastModifiedDate
     @Column(name = "last_modified_date", updatable = true)
-    private LocalDate updateDate;
+    private LocalDateTime updateDate;
 }
